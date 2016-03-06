@@ -20,7 +20,6 @@ export default Ember.Component.extend({
         user: this.get('session.currentUser'),
         album: this.get('album')
       }
-
       this.sendAction('createReview', params);
     }
   }

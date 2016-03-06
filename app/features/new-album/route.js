@@ -6,7 +6,6 @@ const { get, set } = Ember;
 
 export default Ember.Route.extend({
   model() {
-
   },
 
   actions: {
