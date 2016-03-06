@@ -1,0 +1,7 @@
+<div class = 'row main'>
+  <div class='col-sm-8'>
+    {{#each model as |album|}}
+      {{album-tile album=album session=session}}
+    {{/each}}
+  </div>
+</div>

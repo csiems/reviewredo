@@ -1,0 +1,48 @@
+<div class="review-container">
+  {{#unless session.isAuthenticated}}
+    <h4>You must be logged in to add a review!</h4>
+  {{/unless}}
+  {{#unless album.reviews}}
+    <div class="no-reviews">
+      <h4>No reviews have been written for this album yet!</h4>
+      <h4>Be the first.</h4>
+    </div>
+  {{/unless}}
+  {{#each album.reviews as |review|}}
+    <div class='review-tile'>
+      <div class="tag">
+        <div class="image">
+          <img src='{{review.user.avatar}}'/>
+        </div>
+        <div class="username">
+          <a href='http://twitter.com/{{review.user.username}}' target='_blank'>{{review.user.username}}</a><br>
+        </div>
+      </div>
+      <div class="body">
+        <p> {{markdown-to-html markdown=review.body}} </p>
+      </div>
+    </div>
+  {{/each}}
+  {{#if session.isAuthenticated}}
+    <div class='new-review'>
+      <form>
+        <div class="form-group">
+          <label for="rating">Rating</label>
+          {{star-rating item=review rating=currentRating on-click=(action 'updateRating')}}
+        </div>
+        <div class="form-group">
+          {{input value=title id='title' placeholder='Add Your Title'}}
+        </div>
+        <div class="form-group">
+          {{textarea value=content id='content' placeholder='Add Your Review'}}
+        </div>
+      </form>
+      <div>
+
+        <button {{action 'createReview' album session.currentUser}}>Submit</button>
+      </div>
+
+
+    </div>
+  {{/if}}
+</div>

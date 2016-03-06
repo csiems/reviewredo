@@ -1,0 +1,20 @@
+<div class="album-tile">
+  <div class="album-tile-image">
+    {{#link-to 'albums' album.titleURL model=album}}
+    <img src="{{album.imageURL}}"/>
+    {{/link-to}}
+  </div>
+  <div class="album-tile-info">
+    <h4>{{album.title}}</h4>
+    <h5>{{album.artist}}</h5>
+    <h6>{{album.label}}; {{album.releaseYear}}</h6>
+    <h6>By <strong>{{session.currentUser.username}}</strong></h6>
+    <div class="album-tile-excerpt">
+      {{excerpt album.description}}
+    </div>
+  </div>
+  <div class="read-more">
+    {{#link-to 'albums' album.titleURL model=album}}<h4>Read More</h4>{{/link-to}}
+  </div>
+
+</div>

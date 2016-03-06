@@ -1,0 +1,19 @@
+<div class='col-sm-10 offset1 border col-center'>
+  <form class="create-album">
+    <div class="form-group">
+      <label for="title">Title</label>
+      {{input value=title class="form-control" id="title"}}
+      <label for="artist">Artist</label>
+      {{input value=artist class="form-control" id="artist"}}
+      <label for="label">Label</label>
+      {{input value=label class="form-control" id="label"}}
+      <label for="releaseYear">Year of Release</label>
+      {{input value=releaseYear class="form-control" id="releaseYear"}}
+      <label for="imageURL">Image URL</label>
+      {{input value=imageURL class="form-control" id="imageURL"}}
+      <label for="description">Description</label>
+      {{textarea rows=20 value=description class="form-control" id="description"}}
+    </div>
+    <button class='btn btn-primary' {{action 'createAlbum'}}>Add Album</button>
+  </form>
+</div>

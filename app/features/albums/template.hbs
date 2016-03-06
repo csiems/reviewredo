@@ -1,0 +1,28 @@
+{{#link-to  'index'}}
+&#8592; back
+{{/link-to}}
+
+{{#each model as |album|}}
+  <div class='row'>
+    <div class="album-header">
+      <div class="album-header-image">
+        <img src="{{album.imageURL}}"/>
+      </div>
+      <div class="album-header-title-display">
+        <h1>{{album.title}}</h1>
+        <h2>{{album.artist}}</h2>
+        <h4>{{album.label}} | {{album.releaseYear}}</h4>
+      </div>
+      <div class="album-header-description">
+        <p>{{markdown-to-html markdown=album.description}}</p>
+      </div>
+      <div class="font-icon">
+        <i class="fa fa-headphones fa-3x"></i>
+      </div>
+    </div>
+
+  </div>
+  {{log album}}
+
+  {{add-reviews createReview='createReview' updateRating='updateRating' album=album session=session}}
+{{/each}}
