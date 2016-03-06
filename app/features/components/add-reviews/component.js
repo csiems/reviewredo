@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import getOrCreateUser from '../../get-or-create-user/util';
 
-const {get, set} = Ember;
+const {set, get} = Ember;
 
 export default Ember.Component.extend({
   currentRating: 0,
@@ -12,14 +13,20 @@ export default Ember.Component.extend({
     },
 
     createReview() {
-      console.log('in the component');
+
       var params = {
         rating: this.get('currentRating'),
         title: this.get('title'),
         content: this.get('content'),
-        user: this.get('session.currentUser'),
+        user: this.get('currentUser'),
         album: this.get('album')
-      }
+      };
+
+      console.log(JSON.stringify(params.rating));
+      console.log(JSON.stringify(params.title));
+      console.log(JSON.stringify(params.content));
+      console.log(JSON.stringify(params.user));
+      console.log(JSON.stringify(params.album));
       this.sendAction('createReview', params);
     }
   }

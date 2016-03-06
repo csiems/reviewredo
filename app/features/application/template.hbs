@@ -16,15 +16,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         {{#unless session.isAuthenticated}}
-          <li><a href="#" {{action 'login' }}>Login</a></li>
+          <li><div class="navLinks">{{login-modal method="signUp" signUp="signUp" showExtras=true }}</div></li>
+          <li><div class="navLinks">{{login-modal method="signIn" signIn="signIn" showExtras=false }}</div></li>
         {{else}}
-          <li>{{#link-to 'new-album'}}Add An Album{{/link-to}}</li>
-          <li><a href="#" {{action 'logout' }}>Logout</a></li>
-          <li>
+          <li><div class="navLinks">{{#link-to 'new-album'}}<button class="btn btn-link">Add An Album</button>{{/link-to}}</div></li>
+          <li><div class="navLinks"><button class="btn btn-link"{{action "signOut"}}>Sign out</button></div></li>
+          <!-- <li>
             <a href='http://twitter.com/{{session.currentUser.username}}' target='_blank'>
               <img src='{{session.currentUser.profileImageURL}}' height='30px' width='30px'/>
             </a>
-          </li>
+          </li> -->
         {{/unless}}
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -38,8 +38,8 @@
         </div>
       </form>
       <div>
-
-        <button {{action 'createReview' album session.currentUser}}>Submit</button>
+        {{log album}}
+        <button {{action 'createReview' session album session.currentUser}}>Submit</button>
       </div>
 
 
