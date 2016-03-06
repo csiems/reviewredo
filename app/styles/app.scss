@@ -55,11 +55,13 @@ div {
    width: 299px;
    float: right;
    margin-right: 10px;
+   overflow: hidden;
 
   }
 
   .album-tile-excerpt {
     margin-top: 10px;
+    word-wrap: break-word;
   }
 
   .read-more {

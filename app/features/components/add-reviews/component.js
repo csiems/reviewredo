@@ -14,19 +14,19 @@ export default Ember.Component.extend({
 
     createReview() {
       var params = {
-        rating: this.get('currentRating'),
-        title: this.get('title'),
-        content: this.get('content'),
-        user: this.get('user'),
-        album: this.get('album')
+        rating: get(this, 'currentRating'),
+        title: get(this, 'title'),
+        content: get(this, 'content'),
+        user: get(this, 'user'),
+        album: get(this, 'album')
       };
 
-      console.log(JSON.stringify(params.rating));
-      console.log(JSON.stringify(params.title));
-      console.log(JSON.stringify(params.content));
-      console.log(JSON.stringify(params.user));
-      console.log(JSON.stringify(params.album));
-      this.sendAction('createReview', params);
+      console.log("Rating is: " + JSON.stringify(params.rating));
+      console.log("Title is: " + JSON.stringify(params.title));
+      console.log("Content is: " + JSON.stringify(params.content));
+      console.log("User is: " + JSON.stringify(params.user));
+      console.log("Album is: " + JSON.stringify(params.album));
+      // this.sendAction('createReview', params);
     }
   }
 
