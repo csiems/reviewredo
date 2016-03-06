@@ -22,6 +22,5 @@
     </div>
 
   </div>
-
-  {{add-reviews album=album session=session updateRating='updateRating' createReview='createReview' params=params}}
+  {{add-reviews album=album session=session updateRating='updateRating' createReview='createReview' user=session.user}}
 {{/each}}

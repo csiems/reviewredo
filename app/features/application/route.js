@@ -10,10 +10,7 @@ export default Ember.Route.extend({
     return get(this,'session').fetch().catch(function(){});
   },
   model() {
-    return Ember.RSVP.hash({
-      albums: this.store.findAll('album'),
-      user: this.store.findRecord('user', this.get("session").content.uid)
-    });
+    return this.store.findRecord('user', this.get("session").content.uid);
   },
 
   afterModel(model) {
@@ -23,8 +20,6 @@ export default Ember.Route.extend({
   actions:{
     signIn(provider) {
       get(this, 'session').open("firebase", { provider: provider}).then(function(data) {
-        console.log(data.currentUser);
-        console.log(user);
       });
     },
 

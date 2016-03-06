@@ -13,12 +13,11 @@ export default Ember.Component.extend({
     },
 
     createReview() {
-
       var params = {
         rating: this.get('currentRating'),
         title: this.get('title'),
         content: this.get('content'),
-        user: this.get('currentUser'),
+        user: this.get('user'),
         album: this.get('album')
       };
 
