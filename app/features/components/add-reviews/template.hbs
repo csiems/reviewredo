@@ -28,7 +28,7 @@
       <form>
         <div class="form-group">
           <label for="rating">Rating</label>
-          {{star-rating item=review rating=currentRating on-click=(action 'updateRating')}}
+          {{star-rating class='gi-2x' item=review rating=currentRating on-click=(action 'updateRating')}}
         </div>
         <div class="form-group">
           {{input value=title id='title' placeholder='Add Your Title'}}

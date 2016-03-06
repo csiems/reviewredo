@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model(param) {
-
     return this.store.query('album', {orderBy: 'titleURL', equalTo: param.titleURL });
   },
 
   createReview(params) {
+    console.log('in the route');
     var newReview = this.store.createRecord('review', params);
     var album = params.album
     var user = params.user
@@ -18,6 +18,6 @@ export default Ember.Route.extend({
       user.save();
       return album.save();
     });
-    this.transitionTo('albums')
+    this.transitionTo('albums');
   }
 });
