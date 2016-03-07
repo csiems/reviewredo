@@ -26,7 +26,7 @@ export default Ember.Component.extend({
       console.log("Content is: " + JSON.stringify(params.content));
       console.log("User is: " + JSON.stringify(params.user));
       console.log("Album is: " + JSON.stringify(params.album));
-      // this.sendAction('createReview', params);
+      this.sendAction('createReview', params);
     }
   }
 
