@@ -6,5 +6,10 @@ export default DS.Model.extend({
   email: DS.attr(),
   uid: DS.attr(),
   reviews: DS.hasMany('review', {async: true}),
-  albums: DS.hasMany('album', {async: true})
+  albums: DS.hasMany('album', {async: true}),
+
+  fullName: Ember.computed('firstName', 'lastName', function() {
+    return `${this.get('firstName')} ${this.get('lastName')}`;
+  }),
+
 });
