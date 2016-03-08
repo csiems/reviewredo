@@ -10,7 +10,9 @@ export default Ember.Route.extend({
     return get(this,'session').fetch().catch(function(){});
   },
   model() {
-    return this.store.findRecord('user', this.get("session").content.uid);
+    if (this.get('session').content.isAuthenticated) {
+      return this.store.findRecord('user', this.get("session").content.uid);
+    }
   },
 
   afterModel(model) {
@@ -19,7 +21,7 @@ export default Ember.Route.extend({
 
   actions:{
     signIn(provider) {
-      get(this, 'session').open("firebase", { provider: provider}).then(function(data) {
+      this.get('session').open("firebase", { provider: provider}).then(function(data) {
       });
     },
 
@@ -30,7 +32,7 @@ export default Ember.Route.extend({
     signUp(params) {
       set(this, 'firebase', new Firebase(config.firebase));
       var self = this;
-      get(this, 'firebase').createUser({
+      this.get('firebase').createUser({
         email: params.email,
         password: params.password
       }, function(error, userData) {
@@ -65,13 +67,6 @@ export default Ember.Route.extend({
     },
 
     createReview(params) {
-      console.log('in the app route');
-      Object.keys(params).forEach(function(key){
-        if(params[key] === undefined) {
-          alert("Please fill in all form fields");
-          this.transitionTo('albums');
-        }
-      });
       var newReview = this.store.createRecord('review', params);
       var album = params.album;
       album.get('reviews').addObject(newReview);
