@@ -11,17 +11,10 @@ export default DS.Model.extend({
   titleURL: DS.attr(),
   reviews: DS.hasMany('review', {async: true}),
   dateAdded: DS.attr(),
-  averageRating: Ember.computed('reviews', function() {
-    var self = this;
-      var albumReviews = self.get('reviews').then(function(albumReviews) {
-        var ratingArray = albumReviews.mapBy('rating');
-        var sumRating = ratingArray.reduce(function(a, b) {
-          return parseInt(a) + parseInt(b);
-        });
-        var averageRating = sumRating / ratingArray.length;
-        console.log(averageRating);
-        return averageRating;
-      });
-  }).property('reviews'),
+  averageRating: Ember.computed('reviews.@each.rating', function() {
+    return this.get('reviews').reduce(function(sum, review) {
+      return sum += review.get('rating');
+    }, 0) / this.get('reviews').get('length');
+  })
 
 });
