@@ -11,14 +11,17 @@ export default DS.Model.extend({
   titleURL: DS.attr(),
   reviews: DS.hasMany('review', {async: true}),
   dateAdded: DS.attr(),
-
-  numberOfReviews: Ember.computed('reviews', function() {
-    return this.get('reviews.length');
-  }),
-
   averageRating: Ember.computed('reviews', function() {
-    //album.reviews is only holding user and album keys, not review content.
-    console.log(JSON.stringify(this.get('reviews').objectAt(0)));
-  })
+    var self = this;
+      var albumReviews = self.get('reviews').then(function(albumReviews) {
+        var ratingArray = albumReviews.mapBy('rating');
+        var sumRating = ratingArray.reduce(function(a, b) {
+          return parseInt(a) + parseInt(b);
+        });
+        var averageRating = sumRating / ratingArray.length;
+        console.log(averageRating);
+        return averageRating;
+      });
+  }).property('reviews'),
 
 });

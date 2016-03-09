@@ -2,8 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model(param) {
-    return this.store.query('album', {orderBy: 'titleURL', equalTo: param.titleURL });
+    return Ember.RSVP.hash({
+      album: this.store.query('album', {orderBy: 'titleURL', equalTo: param.titleURL })
+    });
   },
+  
 
   // createReview(params) {
   //   console.log('in the album route');
