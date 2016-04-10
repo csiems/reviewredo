@@ -1,7 +1,8 @@
-# Review-rockstar
+# Rockstar Reviews
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Rockstar Reviews is an album posting and rating site built in the Ember.js framework. Users can post  albums and write reviews. Alternately, they can post ratings and review comments on other postings. User ratings are aggregated and displayed on the album's main page. 
+
+This project also features user sign in and authentication with a nosql backend provided by Firebase. This project was built with Ember.js, Git, Node.js (with NPM), Bower, and PhantomJS.
 
 ## Prerequisites
 
